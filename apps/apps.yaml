@@ -1,0 +1,67 @@
+track_notification:
+   module: heat_app
+   class: TrackerNotification
+
+track_alarm:
+   module: heat_app
+   class: AlarmNotification
+
+water_monitor:
+  module: heat_app
+  class: CWaterMonitor
+  sensor_water_total: sensor.water_total
+  sensor_water_leak_detector: variable.water_leak_detector
+  sensor_water_bursts: variable.water_bursts
+  watchdog_duration_min: 50
+  watchdog_leakage_ticks: 3
+  max_day: 2000
+  max_burst: 400
+
+# irrigation app
+wb_irrigation:
+  module: heat_app
+  class: CWBIrrigation
+  m_temp_celsius: 31 #fill from here https://www.holiday-weather.com/ average *day* temperatures in celsius hottest month
+  m_temp_hours: 13 # average day hours hottest month
+  enabled: input_boolean.wbi_enabled #disable irrigation 
+  water_sensor: sensor.water_total_external_norm # read total water  # optional to read water global sensor 
+  taps: 
+     - name: p1
+       days: [1,3,5]  # 1-7 1 for sunday, .. 7 for saturday 
+       stime: "05:45:00" # time to start irrigating 
+       m_week_duration_min: 60
+       switch: switch.wbi_p1
+       manual_duration: input_number.wbi_p1_duration
+       queue_sensor: sensor.wb_irrigation_p1 
+       water_sensor: variable.wbi_water_p1
+       
+     - name: p2
+       days: [2,5]
+       stime: "05:00:00"
+       m_week_duration_min: 20
+       switch: switch.wbi_p2
+       manual_duration: input_number.wbi_p2_duration
+       queue_sensor: sensor.wb_irrigation_p2
+       water_sensor: variable.wbi_water_p2
+     - name: p3
+       days: [2,5]
+       stime: "05:00:00"
+       m_week_duration_min: 20
+       switch: switch.wbi_p3
+       manual_duration: input_number.wbi_p3_duration
+       queue_sensor: sensor.wb_irrigation_p3
+       water_sensor: variable.wbi_water_p3
+     - name: p4
+       days: [2,5]
+       stime: "05:00:00"
+       m_week_duration_min: 20
+       switch: switch.wbi_p4
+       manual_duration: input_number.wbi_p4_duration
+       queue_sensor: sensor.wb_irrigation_p4
+       water_sensor: variable.wbi_water_p2
+
+
+
+
+
+

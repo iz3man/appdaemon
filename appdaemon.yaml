@@ -1,0 +1,11 @@
+appdaemon:
+  time_zone: Europe/Vienna
+  latitude: 48.09686157637923
+  longitude: 16.25918328806818
+  elevation: 443
+  threads: 1
+  plugins:
+    HASS:
+      type: hass
+      ha_url: http://localhost:8123
+      token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NTM1OTQ0OTMsImV4cCI6MTg2ODk1NDQ5MywiaXNzIjoiNDMwYTNhNWY3ZGY5NGIwZTk3MjAzZTcxN2JkMWEyMTcifQ.TwaRSKQ0fksbaLO94AzjwKvKKE7O4itJQfIJ8q1EMCE
